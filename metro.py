@@ -18,21 +18,20 @@ for c in range (len(estacion)):
     estacion_ubi[estacion[c].text] =  ubicacion[c].text 
 
 
-metro_lineas= {}                                                                 # hacemos otro diccionario que asocia Linea y estacion
+metro_lineas= {}                                                                            # hacemos otro diccionario que asocia Linea y estacion
 for key, value in linea_cord.items():
     for key_estacion_ubi, value_estacion_ubi in estacion_ubi.items():
         if value_estacion_ubi in value:
-            metro_lineas.update( {key:[key_estacion_ubi] } )
+            metro_lineas.update( {key:[str(key_estacion_ubi) + str(value_estacion_ubi)] } )
 
-for key, value in linea_cord.items():                                           # en este for hacemos append a las estaciones
+for key, value in linea_cord.items():                                                             # en este for hacemos append a las estaciones
     for key_estacion_ubi, value_estacion_ubi in estacion_ubi.items():
         if value_estacion_ubi in value:
-            metro_lineas[key].append(key_estacion_ubi)
+           metro_lineas[key].append(str(key_estacion_ubi) + str(value_estacion_ubi))
 
 
-for key,value in metro_lineas.items():                                      # Imprimimos los valores de nuestro diccionario
-    print(f"""
+for key,value in metro_lineas.items():                                                # Imprimimos los valores de nuestro diccionario
+    print(f"""  
         {key} tiene las estaciones:
         {value}
     """)
-                    
